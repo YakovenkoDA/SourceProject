@@ -48,9 +48,11 @@ class Controller_Authorize extends System_Controller
         try {
             $user = $userModel->login($params);
             $this->setSessParam('currentUser', $user->id);
+            $this->setSessParam('userRole', $user->role_id);
             if($this->getParamByKey('save') == 'true') {
                 $this->setSessParam('is_save', 1);   
             }
+            
             $userData = array(
                 'id'        =>  $user->id,
                 'email'     =>  trim($params['email']),

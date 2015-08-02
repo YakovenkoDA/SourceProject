@@ -1,0 +1,39 @@
+<?php include 'menu.phtml';?>
+<h2>ADmin продукты</h2>
+<?php $url=URL.'/admin/product/page/';?>
+<?php $currentPage  = $view->getParam('currentPage'); ?>
+<?php $limit        = $view->getParam('limit'); ?>
+<?php $orderType    = $view->getParam('orderType'); ?>
+<?php $orderBy      = $view->getParam('orderBy'); ?>
+<?php $products     = $view->getParam('products'); ?>
+<?php if(!empty($products)) :?>
+    
+<div id="productTitle">
+            <?php if($orderType == 'asc') : ?>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/desc'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/desc'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/desc'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
+            <?php else : ?>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/asc'>Name<?php if($orderBy == 'name') :?>&uarr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/asc'>Price<?php if($orderBy == 'price') :?>&uarr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/asc'>Total<?php if($orderBy == 'total') :?>&uarr;<?php endif; ?></a>
+            <?php endif; ?>    
+</div>
+<div>
+    <?php foreach($products as $product) : ?>
+    <?php /** @var Model_Product $product*/ ?>
+    <div><img src="<?php //echo URL.'/img/Products/'.$product->img;?>" alt="<?php echo $product->img;?>"></div>
+    <div id="product">      
+        <span><?php echo $product->name;?></span>
+        <span><?php echo $product->price;?></span>
+        <span><?php echo $product->total;?></span>
+    </div>
+        <?php endforeach; ?>   
+</div>
+
+    <?php $countPages = ceil($view->getParam('countProducts') / $limit);
+    if($countPages>1){
+                include SITE_PATH.DS.'View'.DS.'paginator.phtml';}
+    ?>
+
+<?php endif; ?>

@@ -1,0 +1,44 @@
+<?php include 'menu.phtml';?>
+<h2>customer</h2>
+<?php $url=URL.'/admin/index/page/';?>
+<?php $currentPage  = $view->getParam('currentPage'); ?>
+<?php $limit        = $view->getParam('limit'); ?>
+<?php $orderType    = $view->getParam('orderType'); ?>
+<?php $orderBy      = $view->getParam('orderBy'); ?>
+<?php $products     = $view->getParam('customers'); ?>
+<?php if(!empty($products)) :?>
+    
+<div id="">
+            <?php if($orderType == 'asc') : ?>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/desc'>login<?php if($orderBy == 'login') :?>&darr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/desc'>email<?php if($orderBy == 'email') :?>&darr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/desc'>role_id<?php if($orderBy == 'role_id') :?>&darr;<?php endif; ?></a>
+            <?php else : ?>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/asc'>login<?php if($orderBy == 'name') :?>&uarr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/asc'>email<?php if($orderBy == 'email') :?>&uarr;<?php endif; ?></a>
+                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/asc'>role_id<?php if($orderBy == 'role_id') :?>&uarr;<?php endif; ?></a>
+            <?php endif; ?>    
+</div>
+<div>
+    <?php foreach($products as $product) : ?>
+    <?php /** @var Model_Product $product*/ ?>
+    <div><img src="<?php //echo URL.'/img/Products/'.$product->img;?>" alt="<?php echo $product->img;?>"></div>
+    <div id="">      
+        <span><?php echo $product->login;?></span>
+        <span><?php echo $product->email;?></span>
+        <span><?php echo $product->role_id;?></span>
+    </div>
+        <?php endforeach; ?>   
+</div>
+
+    <?php $countPages = ceil($view->getParam('countCustomers') / $limit); ?>
+    <?php for($i = 1; $i <= $countPages; $i++) : ?>
+        <?php if($i != $currentPage) :?>
+           <a href="<?php echo $url.$i;?>/limit/<?php echo $limit;?>/orderby/<?php echo $orderBy ?>/ordertype/<?php echo $orderType; ?>"><?php echo $i;?></a>&nbsp&nbsp   
+           
+        <?php else : ?>
+            <?php echo $i;?>&nbsp&nbsp
+        <?php endif;?>    
+    <?php endfor; ?>
+
+<?php endif; ?>

@@ -14,11 +14,6 @@ class Model_User
     
     const LIFETIME_USER_COOKIE = 10800;//3 hours
     
-    public function __construct()
-    {
-
-    }
-    
     public function create($login, $password)
     {
         $dbUser = new Model_Db_Table_User();
@@ -36,7 +31,6 @@ class Model_User
         $dbUser     =  new Model_Db_Table_User();
 
         $userData   =  array_shift($dbUser->getById($userId));
-        //$userData   =  reset($dbUser->getById($userId));
         
         if($userData) {
             $modelUser  = new self();
@@ -51,6 +45,31 @@ class Model_User
         else {
             throw new Exception('User not found', System_Exception::NOT_FOUND);
         }
+    }
+     public static function getItems($params)
+    {
+        $dbTableUser = new Model_Db_Table_User();
+        $userData   = $dbTableUser->getByCriteria($params);
+        
+        $userModels = array();
+        
+        foreach ($userData as $item) {
+            $modelUser  = new self();
+            $modelUser->id          = $item->id;
+            $modelUser->login       = $item->login;
+            $modelUser->email       = $item->email;
+            $modelUser->photo       = $item->photo;
+            $modelUser->role_id     = $item->role_id;
+            $userModels[] = $modelUser;
+        }
+        
+        return $userModels;
+    }
+    public static function getCountItems()
+    {
+        $dbTableUser = new Model_Db_Table_User();
+        $countItems     = $dbTableUser->getCount();
+        return $countItems; 
     }
     
     /**

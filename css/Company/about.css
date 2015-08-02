@@ -1,0 +1,25 @@
+#body
+{
+font: 18px serif;
+}
+#aboutUs
+{
+text-align: left;
+width: 80%;
+}
+#about
+{ 
+
+text-align:left;     
+width: 80%;
+border: 2px double black;
+border-radius: 10px;
+}
+div
+{
+margin: auto;     
+}
+h2
+{
+    height: 50px;
+}

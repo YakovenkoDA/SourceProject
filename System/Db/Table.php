@@ -44,15 +44,15 @@ abstract class System_Db_Table
             }
         }
  
-        if(isset($params['limit'])) {
-            $limit = $params['limit'];
+        if(isset($_SESSION['limit'])) {
+            $limit = $_SESSION['limit'];
             $page *= $limit;
         }
-        if(isset($params['orderby'])) {
-            $orderBy = $params['orderby'];
+        if(isset($_SESSION['orderby'])) {
+            $orderBy = $_SESSION['orderby'];
         }
-        if(isset($params['ordertype'])) {
-            $orderType = $params['ordertype'];
+        if(isset($_SESSION['ordertype'])) {
+            $orderType = $_SESSION['ordertype'];
         }
         
         $sql    = 'select * from ' . $this->_name . ' order by ' . $orderBy . ' ' . $orderType . ' limit :page, :limit';

@@ -2,7 +2,9 @@
 define('DS', DIRECTORY_SEPARATOR);
 // Узнаём путь к файлам сайта
 $site_path = realpath(dirname(__FILE__) . DS) . DS;
+$host_path='http://'.$_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME']);
 define('SITE_PATH', $site_path);
+define('URL', $host_path);
 
 $config     = file_get_contents(SITE_PATH . DS . 'config.xml');
 

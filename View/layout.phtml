@@ -27,18 +27,23 @@
         }
     } 
 ?>
+<!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="/js/jquery.js"></script>
-        <script type="text/javascript" src="/js/authorize.js"></script>
+        <meta charset="UTF-8">
+        <title><?php echo $_SERVER['SERVER_NAME'];?></title>
+        <link href="<?php echo URL; ?>/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="<?php echo URL.'/css/'.$viewFolder.'/'.$actionName.'.css'; ?>" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="<?php echo URL;?>/js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo URL;?>/js/authorize.js"></script>
     </head>    
     <body>    
-        <div id="error" style="width:200px; margin:0 auto; color:red"><?php echo !empty($errorMessage) ? $errorMessage : ''; ?></div>
-
-        <div id="userEmail" style="width:300px; margin-left:70%"><?php echo !empty($userId) ? 'Вы зашли как: ' : '';?><a href="<?php echo !empty($userId)? '/user/profile/id/'.$userId : '';?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
-        <div id="userId" style="width:100px; margin-left:80%"><a id="logout" href="#"><?php echo !empty($userId) ? 'Exit' : ''?></a></div>    
-
-        <div style="width:200px; margin-left: 80%; <?php if(!empty($userEmail)) { echo 'display: none;'; } ?>" id="loginFormDiv">
+        <div id="error"><?php echo !empty($errorMessage) ? $errorMessage : ''; ?></div>
+        <div class="userEnter">
+        <div id="userEmail"><?php echo !empty($userId) ? 'Вы зашли как: ' : '';?><a href="<?php echo !empty($userId)? '/user/profile/id/'.$userId : '';?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
+        <div id="userId"><a id="logout" href="#"><?php echo !empty($userId) ? 'Exit' : ''?></a></div>    
+        </div>
+        <div <?php if(!empty($userEmail)) { echo 'style="display: none;"'; } ?> id="loginFormDiv">
             <form name="autorize" id="loginForm" method="POST" autocomplete="off">
                 <input placeholder="Login" type="text" name="email" maxlength="20" /><br />
                 <input placeholder="Password" type="password" name="password" maxlength="30" /><br />
@@ -48,41 +53,40 @@
             </form>
         </div>
 
-        <?php //if( (!empty($userRoleId) && $userRoleId != Model_User::ROLE_ADMIN_ID) || empty($userRoleId) ) : ?>
+        <?php// if( (!empty($userRoleId) && $userRoleId != Model_User::ROLE_ADMIN_ID) || empty($userRoleId) ) : ?>
             
             <div id="menu">
-                <a href="/">Главная </a> &nbsp&nbsp | &nbsp&nbsp
-                <a href="/product/index">Продукты </a>  &nbsp&nbsp | &nbsp&nbsp
-                <a href="/company/portfolio">Портфолио </a>  &nbsp&nbsp | &nbsp&nbsp
-                <a href="/company/about">О компании </a>  &nbsp&nbsp | &nbsp&nbsp
-                <a href="/company/contact">Контакты </a>  &nbsp&nbsp | &nbsp&nbsp
-                <?php //if ($userRoleId == Model_User::ROLE_ADMIN_ID) : ?>
-                    <a id="admin_href" href="/admin/index" style="<?php if($userRoleId != Model_User::ROLE_ADMIN_ID) { echo 'display: none;'; } ?>">Админка </a>  &nbsp&nbsp
-                <?php //endif; ?>
+                <a href="<?php echo URL;?>/">Главная </a> 
+                <a href="<?php echo URL;?>/product/index">Продукты </a>
+                <a href="<?php echo URL;?>/company/portfolio">Портфолио </a>
+                <a href="<?php echo URL;?>/company/about">О компании </a>
+                <a href="<?php echo URL;?>/company/contact">Контакты </a>                
+                <a id="admin_href" href="<?php echo URL;?>/admin/index" <?php if($userRoleId != Model_User::ROLE_ADMIN_ID) { echo 'style="display: none;"'; } ?>>Админка </a>
             </div>
-        
+        <?php //if ($userRoleId == Model_User::ROLE_ADMIN_ID) : ?>
         <?php //else : ?>
         
-<!--            <div id="admin_menu">
-                <a href="/customer/index">Клиенты </a> &nbsp&nbsp | &nbsp&nbsp
-                <a href="/product/index">Продукты </a>  &nbsp&nbsp | &nbsp&nbsp
-                <a href="/order/index">Заказы </a>  &nbsp&nbsp
+<!--           <div id="admin_menu">
+                <a href="<?php echo URL;?>/customer/index">Клиенты </a>
+                <a href="<?php echo URL;?>/product/index">Продукты </a>
+                <a href="<?php echo URL;?>/order/index">Заказы </a>
             </div>-->
         
         <?php //endif; ?>
         <?php 
-        //$scriptFile = 'js' . '/' . $viewFolder . '/' . $actionName. '.js';
-        //if(file_exists($scriptFile)): ?>
-            <!--<script src="<?php // echo '/' . $scriptFile; ?>"></script>-->
-        <?php //endif; ?>
+        $scriptFile = 'js' . '/' . $viewFolder . '/' . $actionName. '.js';
+        if(file_exists($scriptFile)): ?>
+            <script src="<?php  echo URL.'/' . $scriptFile; ?>"></script>
+        <?php endif; ?>
         <br />
         <hr />
-
+    <div id="forContent">
     <?php
         if(file_exists($viewFileName)) {
             include $viewFileName;
         }
     ?>
+    </div>
     </body>
     
 </html>

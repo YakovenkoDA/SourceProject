@@ -1,0 +1,20 @@
+#productTitle
+{   
+margin: 50px; 
+}
+#productTitle a
+{
+    padding: 20px;
+}
+span
+{   
+padding: 5%;
+}
+#product
+{
+    padding: 30px;
+}
+#limit a
+{
+    padding: 10px;
+}

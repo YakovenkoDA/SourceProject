@@ -1,0 +1,43 @@
+body
+{
+text-align: center; 
+background: scroll white  url(../img/bacground.jpg) no-repeat;
+}
+#error
+{
+width:200px; 
+margin:0 78%; 
+color:red;  
+}
+.userEnter
+{
+ width:300px;
+ margin: 10px;
+ margin-left:70%;
+ background-color:gainsboro;  
+ border-radius: 10px;
+}
+
+#loginFormDiv
+{
+  color:white;
+  text-align:left;  
+  width:400px;
+  margin-left: 80%; 
+}
+#menu
+{
+width:650px;
+margin: auto;
+}
+#menu>a
+{
+font: 20px fantasy;
+margin-left:20px;
+}
+#forContent
+{
+ width:70%;
+ margin: auto;
+ margin-top: 50px;
+}

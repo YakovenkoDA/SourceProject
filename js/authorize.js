@@ -1,8 +1,9 @@
 $(document).ready(function() {
+    var url_host=$('a:contains(Главная)').attr('href');
     $('#loginForm').on('click', 'input[name=register]', function(e){
-        e.preventDefault(1,2);
+        e.preventDefault();
         $.post(
-            '/authorize/register',
+            url_host+'authorize/register',
             { 
                 email:      $('input[name=email]').val(), 
                 password:   $('input[name=password]').val(),
@@ -13,7 +14,7 @@ $(document).ready(function() {
                     $('#error').html(data.error);
                 }
                 else {
-                    $('#userEmail').html('Вы зашли как: ' + '<a href="/user/profile/id/'+ data.id + '">' + data.email + '</a>');
+                    $('#userEmail').html('Вы зашли как: ' + '<a href='+url_host+'"/user/profile/id/'+ data.id + '">' + data.email + '</a>');
                     $('#userId').html('<a id="logout" href="#">Exit</a>');
                     $('#loginFormDiv').hide();
                     $('#error').empty();
@@ -26,7 +27,7 @@ $(document).ready(function() {
     $('#loginForm').on('click', 'input[name=login]', function(e){
         e.preventDefault();
         $.post(
-            '/authorize/login', 
+            url_host+'authorize/login', 
             { 
                 email:      $('input[name=email]').val(), 
                 password:   $('input[name=password]').val(),
@@ -37,14 +38,13 @@ $(document).ready(function() {
                     $('#error').html(data.error);
                 }
                 else {
-                    $('#userEmail').html('Вы зашли как: ' + '<a href="/user/profile/id/'+ data.id + '">' + data.email + '</a>');
+                    $('#userEmail').html('Вы зашли как: ' + '<a href="'+url_host+'/user/profile/id/'+ data.id + '">' + data.email + '</a>');
                     $('#userId').html('<a id="logout" href="#">Exit</a>');
                     $('#loginFormDiv').hide();
                     $('#error').empty();
                    
                     if(data.role_id == 1) {
-                         //$('#admin_href').show();
-                         window.location = "http://javascript.ru";
+                         $('#admin_href').show();
                     }
                 }
             },
@@ -55,7 +55,7 @@ $(document).ready(function() {
     $('body').on('click', '#logout', function(e) {
         e.preventDefault();
         $.post(
-            '/authorize/exit/', 
+            url_host+'authorize/exit/', 
             {
                 
             },
