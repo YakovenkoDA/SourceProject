@@ -32,15 +32,24 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo $_SERVER['SERVER_NAME'];?></title>
-        <link href="<?php echo URL; ?>/css/layout.css" rel="stylesheet" type="text/css"/>
-        <link href="<?php echo URL.'/css/'.$viewFolder.'/'.$actionName.'.css'; ?>" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="<?php echo URL;?>/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo URL;?>/js/authorize.js"></script>
+        <link href="<?= URL; ?>/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= URL.'/css/'.$viewFolder.'/'.$actionName.'.css'; ?>" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="<?= URL;?>/js/jquery.js"></script>
+        <script type="text/javascript" src="<?= URL;?>/js/authorize.js"></script>
+        
+        <!-- Add mousewheel plugin (this is optional) -->
+        <script type="text/javascript" src="<?= URL?>/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+        <!-- Add fancyBox -->
+        <link rel="stylesheet" href="<?= URL?>/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+        <script type="text/javascript" src="<?= URL?>/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+        <script type="text/javascript" src="<?= URL.'/js/'.$viewFolder.'/'.$actionName.'.js'?>"></script>
     </head>    
     <body>    
         <div id="error"><?php echo !empty($errorMessage) ? $errorMessage : ''; ?></div>
         <div class="userEnter">
-        <div id="userEmail"><?php echo !empty($userId) ? 'Вы зашли как: ' : '';?><a href="<?php echo !empty($userId)? '/user/profile/id/'.$userId : '';?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
+        <div id="userEmail"><?php echo !empty($userId) ? 'Вы зашли как: ' : '';?><a href="<?php echo !empty($userId)? URL.'/user/profile/id/'.$userId : '';?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
         <div id="userId"><a id="logout" href="#"><?php echo !empty($userId) ? 'Exit' : ''?></a></div>    
         </div>
         <div <?php if(!empty($userEmail)) { echo 'style="display: none;"'; } ?> id="loginFormDiv">

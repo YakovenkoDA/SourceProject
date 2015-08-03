@@ -47,7 +47,8 @@ class Controller_Admin extends System_Controller
         /**
          * @var Model_Product[] $productModels
          */
-        $productModels = Model_Product :: getItems($params);
+        if(!empty($params['remove'])){ Model_Product :: remove($params['id']);} 
+        $productModels = Model_Product :: getItems($params);              
         $countProducts = Model_Product :: getCountItems();
         
         if($this->getSessParam('limit')== NULL){$this->setSessParam('limit',5);}
@@ -59,5 +60,22 @@ class Controller_Admin extends System_Controller
         $this->view->setParam('orderType',$this->getSessParam('ordertype'));
         $this->view->setParam('orderBy', $this->getSessParam('orderby')); 
     }
+    public function productInfoAction()
+    {
+        $params = $this->_getArguments();
+
+        if(!empty($params['id']))
+        {
+            $productId = $params['id'];
+        
+            try {
+                $modelProduct = Model_Product :: getById($productId);
+                $this->view->setParam('product', $modelProduct);
+            }
+            catch(Exception $e) {
+            $this->view->setParam('error', $e->getMessage());
+            }
+        }      
     
+    }
 }

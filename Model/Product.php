@@ -122,4 +122,9 @@ class Model_Product
         $countItems     = $dbTableProduct->getCount();
         return $countItems; 
     }
+    public static function remove($id)
+    {
+     $dbTableProduct = new Model_Db_Table_Product();
+     $dbTableProduct->removeByID($id);
+    }
 }

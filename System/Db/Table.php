@@ -87,5 +87,11 @@ abstract class System_Db_Table
         
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         return $result;
-    }        
+    }
+    public function removeByID($id)
+        {
+        $sql    = 'delete from ' . $this->_name . ' where id = ?';
+        $sth    = $this->_connection->prepare($sql);        
+        $sth->execute(array($id));        
+        }
 }

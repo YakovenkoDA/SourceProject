@@ -7,11 +7,17 @@
             <file>file:/X:/home/localhost/www/denis/Model/User.php</file>
             <file>file:/X:/home/localhost/www/denis/View/Admin/product.phtml</file>
             <file>file:/X:/home/localhost/www/denis/System/Db/Table.php</file>
-            <file>file:/X:/home/localhost/www/denis/Controller/Admin.php</file>
+            <file>file:/X:/home/localhost/www/denis/View/Product/index.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/View/layout.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/View/Admin/menu.phtml</file>
             <file>file:/X:/home/localhost/www/denis/Model/Product.php</file>
             <file>file:/X:/home/localhost/www/denis/Model/Db/Table/Product.php</file>
+            <file>file:/X:/home/localhost/www/denis/View/paginator.phtml</file>
             <file>file:/X:/home/localhost/www/denis/Controller/Product.php</file>
             <file>file:/X:/home/localhost/www/denis/View/Admin/customer.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/System/Router.php</file>
+            <file>file:/X:/home/localhost/www/denis/Controller/Admin.php</file>
+            <file>file:/X:/home/localhost/www/denis/View/Product/info.phtml</file>
             <file>file:/X:/home/localhost/www/denis/Controller/User.php</file>
         </group>
     </open-files>

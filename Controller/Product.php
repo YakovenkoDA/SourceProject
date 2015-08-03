@@ -24,20 +24,5 @@ class Controller_Product extends System_Controller
         $this->view->setParam('currentPage', $currentPage);
         $this->view->setParam('orderType',$this->getSessParam('ordertype'));
         $this->view->setParam('orderBy', $this->getSessParam('orderby'));
-    }
-    
-    public function infoAction()
-    {
-        $args = $this->_getArguments();
-
-        $productId = $args['id'];
-        
-        try {
-            $modelProduct = Model_Product :: getById($productId);
-            $this->view->setParam('product', $modelProduct);
-        }
-        catch(Exception $e) {
-            $this->view->setParam('error', $e->getMessage());
-        }
-    }        
+    }  
 }

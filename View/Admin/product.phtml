@@ -6,30 +6,40 @@
 <?php $orderType    = $view->getParam('orderType'); ?>
 <?php $orderBy      = $view->getParam('orderBy'); ?>
 <?php $products     = $view->getParam('products'); ?>
+<a href="<?=URL.'/admin/productInfo'?>">add new product</a></br>
+<a class="gallery2" title="Простая HTML" href="<?php echo URL.'/admin/customer/page/'?>">Клик</a>
 <?php if(!empty($products)) :?>
-    
-<div id="productTitle">
+    <table align="center">
+        <tr>
+            <th></th>
             <?php if($orderType == 'asc') : ?>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/desc'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/desc'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/desc'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/img/ordertype/desc'>Img<?php if($orderBy == 'img') :?>&darr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/name/ordertype/desc'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/name/ordertype/desc'>description<?php if($orderBy == 'description') :?>&darr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/price/ordertype/desc'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/total/ordertype/desc'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a></th>
             <?php else : ?>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/name/ordertype/asc'>Name<?php if($orderBy == 'name') :?>&uarr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/price/ordertype/asc'>Price<?php if($orderBy == 'price') :?>&uarr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/limit/<?php echo $limit;?>/orderby/total/ordertype/asc'>Total<?php if($orderBy == 'total') :?>&uarr;<?php endif; ?></a>
-            <?php endif; ?>    
-</div>
-<div>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/img/ordertype/asc'>Img<?php if($orderBy == 'img') :?>&uarr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/name/ordertype/asc'>Name<?php if($orderBy == 'name') :?>&uarr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/name/ordertype/asc'>description<?php if($orderBy == 'description') :?>&uarr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/price/ordertype/asc'>Price<?php if($orderBy == 'price') :?>&uarr;<?php endif; ?></a></th>
+                <th><a href='<?php echo $url.$currentPage;?>/orderby/total/ordertype/asc'>Total<?php if($orderBy == 'total') :?>&uarr;<?php endif; ?></a></th>
+            <?php endif; ?>  
+               <th></th>  
+        </tr>        
     <?php foreach($products as $product) : ?>
-    <?php /** @var Model_Product $product*/ ?>
-    <div><img src="<?php //echo URL.'/img/Products/'.$product->img;?>" alt="<?php echo $product->img;?>"></div>
-    <div id="product">      
-        <span><?php echo $product->name;?></span>
-        <span><?php echo $product->price;?></span>
-        <span><?php echo $product->total;?></span>
-    </div>
+    <?php /** @var Model_Product $product*/ ?>   
+    <tr>   
+        <td><a href="#">chenge</a></td>
+        <td><?php echo $product->img;?></td>
+        <td><?php echo $product->name;?></td>
+        <td><?php echo $product->description;?></td>
+        <td><?php echo $product->price;?></td>
+        <td><?php echo $product->total;?></td>
+        <td><a href="<?=$url.$currentPage.'/remove/true/id/'.$product->id?>">delete</a></td>
+    </tr>
         <?php endforeach; ?>   
-</div>
+</table>
 
     <?php $countPages = ceil($view->getParam('countProducts') / $limit);
     if($countPages>1){
