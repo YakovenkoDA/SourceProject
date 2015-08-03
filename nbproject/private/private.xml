@@ -3,22 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/X:/home/localhost/www/denis/Model/Db/Table/User.php</file>
+            <file>file:/X:/home/localhost/www/denis/Controller/Authorize.php</file>
             <file>file:/X:/home/localhost/www/denis/Model/User.php</file>
             <file>file:/X:/home/localhost/www/denis/View/Admin/product.phtml</file>
             <file>file:/X:/home/localhost/www/denis/System/Db/Table.php</file>
-            <file>file:/X:/home/localhost/www/denis/View/Product/index.phtml</file>
-            <file>file:/X:/home/localhost/www/denis/View/layout.phtml</file>
-            <file>file:/X:/home/localhost/www/denis/View/Admin/menu.phtml</file>
-            <file>file:/X:/home/localhost/www/denis/Model/Product.php</file>
-            <file>file:/X:/home/localhost/www/denis/Model/Db/Table/Product.php</file>
+            <file>file:/X:/home/localhost/www/denis/js/Admin/product.js</file>
+            <file>file:/X:/home/localhost/www/denis/Controller/Index.php</file>
+            <file>file:/X:/home/localhost/www/denis/System/View.php</file>
             <file>file:/X:/home/localhost/www/denis/View/paginator.phtml</file>
             <file>file:/X:/home/localhost/www/denis/Controller/Product.php</file>
-            <file>file:/X:/home/localhost/www/denis/View/Admin/customer.phtml</file>
-            <file>file:/X:/home/localhost/www/denis/System/Router.php</file>
-            <file>file:/X:/home/localhost/www/denis/Controller/Admin.php</file>
+            <file>file:/X:/home/localhost/www/denis/css/Admin/product.css</file>
+            <file>file:/X:/home/localhost/www/denis/css/layout.css</file>
+            <file>file:/X:/home/localhost/www/denis/css/Index/index.css</file>
             <file>file:/X:/home/localhost/www/denis/View/Product/info.phtml</file>
             <file>file:/X:/home/localhost/www/denis/Controller/User.php</file>
+            <file>file:/X:/home/localhost/www/denis/View/Product/index.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/View/layout.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/Model/Product.php</file>
+            <file>file:/X:/home/localhost/www/denis/js/User/profile.js</file>
+            <file>file:/X:/home/localhost/www/denis/js/authorize.js</file>
+            <file>file:/X:/home/localhost/www/denis/View/Admin/productInfo.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/Controller/Company.php</file>
+            <file>file:/X:/home/localhost/www/denis/Controller/Admin.php</file>
+            <file>file:/X:/home/localhost/www/denis/css/Product/index.css</file>
+            <file>file:/X:/home/localhost/www/denis/View/limit.phtml</file>
+            <file>file:/X:/home/localhost/www/denis/View/Index/index.phtml</file>
         </group>
     </open-files>
 </project-private>

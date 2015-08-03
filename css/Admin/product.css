@@ -1,0 +1,19 @@
+#forContent a
+{
+padding: 10px;
+}
+h2
+{
+margin: auto;
+width: 250px;    
+}
+table
+{
+color: white;
+
+border-radius: 10px;
+}
+td
+{
+  padding: 10px;
+}

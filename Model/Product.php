@@ -99,8 +99,7 @@ class Model_Product
         $productTable     =  new Model_Db_Table_Product();
 
         $productData   =  reset($productTable->getById($productId));
-        
-        
+                
         if($productData) {
             $modelProduct  = new self();
             $modelProduct->id           = $productData->id;

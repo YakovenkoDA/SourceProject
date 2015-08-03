@@ -67,7 +67,7 @@ class Controller_Admin extends System_Controller
         if(!empty($params['id']))
         {
             $productId = $params['id'];
-        
+            
             try {
                 $modelProduct = Model_Product :: getById($productId);
                 $this->view->setParam('product', $modelProduct);

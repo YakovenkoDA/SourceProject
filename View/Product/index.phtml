@@ -1,4 +1,4 @@
-<h2>Наши продукты</h2>
+<h2 class="mainBox">Наши продукты</h2>
 <?php $url=URL.'/product/index/page/';?>
 <?php $currentPage  = $view->getParam('currentPage'); ?>
 <?php $limit        = $view->getParam('limit'); ?>
@@ -6,38 +6,30 @@
 <?php $orderBy      = $view->getParam('orderBy'); ?>
 <?php $products     = $view->getParam('products'); ?>
 <?php if(!empty($products)) :?>
-
-<div id="limit">
-        <a href='<?php echo $url.$currentPage;?>/limit/1'>1<?php if($limit == '1') :?>&darr;<?php endif; ?></a>
-        <a href='<?php echo $url.$currentPage;?>/limit/5'>5<?php if($limit == '5') :?>&darr;<?php endif; ?></a>
-        <a href='<?php echo $url.$currentPage;?>/limit/10'>10<?php if($limit == '10') :?>&darr;<?php endif; ?></a>
-        <a href='<?php echo $url.$currentPage;?>/limit/15'>15<?php if($limit == '15') :?>&darr;<?php endif; ?></a>
-        <a href='<?php echo $url.$currentPage;?>/limit/20'>20<?php if($limit == '20') :?>&darr;<?php endif; ?></a> 
-        <a href='<?php echo $url.$currentPage;?>/ordertype/<?php echo $orderType!='asc'?'asc':'desc';?>'><?php echo $orderType!='asc'?'asc':'desc';?></a> 
-</div>
+<?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
+<div>
 <div id="productTitle">
-                <a href='<?php echo $url.$currentPage;?>/orderby/name'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/orderby/price'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
-                <a href='<?php echo $url.$currentPage;?>/orderby/total'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
+                <a href='<?= $url.$currentPage;?>/orderby/name'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
+                <a href='<?= $url.$currentPage;?>/orderby/price'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
+                <a href='<?= $url.$currentPage;?>/orderby/total'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
+                <a href='<?= $url.$currentPage;?>/ordertype/<?php echo $orderType!='asc'?'asc':'desc';?>'><?php echo $orderType!='asc'?'asc':'desc';?></a> 
 </div>
 
     <?php foreach($products as $product) : ?>
     <?php /** @var Model_Product $product*/ ?>
     
-    <div id="product"> 
-        <img src="<?php //echo URL.'/img/Products/'.$product->img;?>" alt="<?php echo $product->img;?>">
-        <span><?php echo $product->name;?></span>
-        <span><?php echo $product->price;?></span>
-        <span><?php echo $product->total;?></span>
+    <div id="product" class="mainBox"> 
+        <div><img alt="<?php echo 'img-'.$product->img->name;?>" src="<?= file_exists(SITE_PATH.$img=('/img/Products/'.$product->img))?URL.$img : URL.'/img/Products/img.png';?>"></div>
+        <div><?= $product->name;?></div>
+        <div><?= $product->price;?></div>
+        <div><?= $product->description;?></div>
+        <div><?= $product->total;?></div>
     </div>
-        <?php endforeach; ?>   
-
+        <?php endforeach; ?>
+</div>
     <?php 
     $countPages = ceil($view->getParam('countProducts') / $limit);
-    if($countPages>1){
-                include SITE_PATH.DS.'View'.DS.'paginator.phtml';
-                
-    }
+    if($countPages>1){include SITE_PATH.DS.'View'.DS.'paginator.phtml';}
     ?>
 
 <?php endif; ?>

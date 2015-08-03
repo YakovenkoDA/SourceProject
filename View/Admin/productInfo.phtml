@@ -1,19 +1,29 @@
+<?php
+$product     = $view->getParam('product');
+if(!empty($product))
+    {
+    $name=$product->name;
+    $description = $product->description;
+    $price= $product->price;
+    $total= $product->total;
+    }
+?>
 <form>
     <div>    
     <label for="name">Product name</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="<?=$name?>"placeholder="new name">
     </div>
     <div>
      <label for="price">Price</label>
-     <input type="number" name="price" id="price">  
+     <input type="number" name="price" id="price" value="<?=$price?>" placeholder="new price">  
     </div>
     <div>
      <label for="total">Total</label>
-     <input type="number" name="total" id="total">  
+     <input type="number" name="total" id="total" value="<?=$total?>"placeholder="new total">  
     </div>
     <div>
-     <label for="description">description</label>
-     <textarea name="description" id="description"></textarea>
+     <label for="description">description</label><br/>
+     <textarea name="description" id="description"><?=$description?></textarea>
     </div>
     <div>
      <label for="img">img</label>

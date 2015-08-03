@@ -48,11 +48,11 @@
     </head>    
     <body>    
         <div id="error"><?php echo !empty($errorMessage) ? $errorMessage : ''; ?></div>
-        <div class="userEnter">
-        <div id="userEmail"><?php echo !empty($userId) ? 'Вы зашли как: ' : '';?><a href="<?php echo !empty($userId)? URL.'/user/profile/id/'.$userId : '';?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
+        <div <?= !empty($userId) ?'':'style="display: none;"';?> class="mainBox" id="userEnter">
+        <div id="userEmail">'Вы зашли как:<a href="<?=URL?>/user/profile/id/<?=$userId?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
         <div id="userId"><a id="logout" href="#"><?php echo !empty($userId) ? 'Exit' : ''?></a></div>    
         </div>
-        <div <?php if(!empty($userEmail)) { echo 'style="display: none;"'; } ?> id="loginFormDiv">
+        <div <?=!empty($userEmail)? 'style="display: none;"':''?> id="loginFormDiv">
             <form name="autorize" id="loginForm" method="POST" autocomplete="off">
                 <input placeholder="Login" type="text" name="email" maxlength="20" /><br />
                 <input placeholder="Password" type="password" name="password" maxlength="30" /><br />
@@ -60,11 +60,8 @@
                 <input type="submit" name="login" value="Enter" />
                 <input type="submit" name="register" value="Register" />
             </form>
-        </div>
-
-        <?php// if( (!empty($userRoleId) && $userRoleId != Model_User::ROLE_ADMIN_ID) || empty($userRoleId) ) : ?>
-            
-            <div id="menu">
+        </div>            
+        <div id="menu" class="mainBox">
                 <a href="<?php echo URL;?>/">Главная </a> 
                 <a href="<?php echo URL;?>/product/index">Продукты </a>
                 <a href="<?php echo URL;?>/company/portfolio">Портфолио </a>
@@ -72,16 +69,6 @@
                 <a href="<?php echo URL;?>/company/contact">Контакты </a>                
                 <a id="admin_href" href="<?php echo URL;?>/admin/index" <?php if($userRoleId != Model_User::ROLE_ADMIN_ID) { echo 'style="display: none;"'; } ?>>Админка </a>
             </div>
-        <?php //if ($userRoleId == Model_User::ROLE_ADMIN_ID) : ?>
-        <?php //else : ?>
-        
-<!--           <div id="admin_menu">
-                <a href="<?php echo URL;?>/customer/index">Клиенты </a>
-                <a href="<?php echo URL;?>/product/index">Продукты </a>
-                <a href="<?php echo URL;?>/order/index">Заказы </a>
-            </div>-->
-        
-        <?php //endif; ?>
         <?php 
         $scriptFile = 'js' . '/' . $viewFolder . '/' . $actionName. '.js';
         if(file_exists($scriptFile)): ?>

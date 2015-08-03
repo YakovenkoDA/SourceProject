@@ -1,29 +1,27 @@
 body
 {
 text-align: center; 
-background: scroll white  url(../img/bacground.jpg) no-repeat;
+background: white  url(../img/bacground.jpg) no-repeat;
 }
 #error
 {
 width:200px; 
-margin:0 78%; 
+margin:0 74%; 
 color:red;  
 }
-.userEnter
+#userEnter
 {
+ color: darkblue;
  width:300px;
- margin: 10px;
  margin-left:70%;
- background-color:gainsboro;  
- border-radius: 10px;
 }
 
 #loginFormDiv
 {
-  color:white;
   text-align:left;  
-  width:400px;
-  margin-left: 80%; 
+  width:150px;
+  padding: 10px;
+  margin-left:75%;
 }
 #menu
 {
@@ -32,7 +30,7 @@ margin: auto;
 }
 #menu>a
 {
-font: 20px fantasy;
+font:  20px cursive;
 margin-left:20px;
 }
 #forContent
@@ -40,4 +38,13 @@ margin-left:20px;
  width:70%;
  margin: auto;
  margin-top: 50px;
+}
+.mainBox
+{
+background-color:lightskyblue;
+border-radius: 10px;    
+}
+#limit
+{
+padding:10px;    
 }

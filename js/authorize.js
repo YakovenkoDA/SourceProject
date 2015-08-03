@@ -38,6 +38,7 @@ $(document).ready(function() {
                     $('#error').html(data.error);
                 }
                 else {
+                    $('#userEnter').show();
                     $('#userEmail').html('Вы зашли как: ' + '<a href="'+url_host+'/user/profile/id/'+ data.id + '">' + data.email + '</a>');
                     $('#userId').html('<a id="logout" href="#">Exit</a>');
                     $('#loginFormDiv').hide();
