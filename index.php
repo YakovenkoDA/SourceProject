@@ -43,6 +43,7 @@ function loadClass($className)
 
 try {
     System_Registry :: set('db', $db);
+    System_Registry :: set('configXML', $configXML);
 }
 catch(Exception $e) {
     echo $e->getMessage();

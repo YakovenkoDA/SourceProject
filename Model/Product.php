@@ -126,4 +126,14 @@ class Model_Product
      $dbTableProduct = new Model_Db_Table_Product();
      $dbTableProduct->removeByID($id);
     }
+    public static function setProduct()
+    {
+     if(isse($_POST))
+         {
+         foreach ($_POST as $key=>$value)
+         {
+             
+         }
+         }   
+    }
 }

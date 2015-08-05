@@ -1,14 +1,17 @@
 <?php
 $product     = $view->getParam('product');
+$currentPage  = $view->getParam('currentPage');
+$url=URL.'/Admin/product';
 if(!empty($product))
     {
+    $url.='/id/'.$product->id;
     $name=$product->name;
     $description = $product->description;
     $price= $product->price;
     $total= $product->total;
     }
 ?>
-<form>
+<form action="<?=$url.'/page/'.$currentPage.'/set/1'?>" method="POST" enctype="multipart/form-data">
     <div>    
     <label for="name">Product name</label>
     <input type="text" name="name" id="name" value="<?=$name?>"placeholder="new name">
@@ -28,5 +31,12 @@ if(!empty($product))
     <div>
      <label for="img">img</label>
      <input type="file" name="img" id="img">  
-    </div>        
+    </div>
+    <div>
+        <input type="submit" value="Ok">
+        <input type="reset" value="Reset">
+    </div>
+</form>
+<form action="<?=URL.'/Admin/product'.'/page/'.$currentPage?>">
+    <input type="submit" value="Cansel">
 </form>

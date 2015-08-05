@@ -1,13 +1,15 @@
-<h2>Контакты</h2>
-<div id="body">
-<h3>Адрес:</h3>
-<p>г.Харьков ул.Безимянная дом 3</p>
-<h3>eMail:</h3>
-<p><?php echo $_SERVER['SERVER_NAME']?>@kh.ua</p>
-<h3>Skype:</h3>
-<p><?php echo $_SERVER['SERVER_NAME']?></p>
-<h3>Наши телефоны:</h3>
-<p>Life</p>
-<p>MTS</p>
-<p>Київстар</p>
+<?php
+       $address =   $view->getParam('address');
+       $tel =       $view->getParam('tel');
+       $email =     $view->getParam('email');
+?>
+<h2 class="mainBox">Контакты</h2>
+<div id="body" class="mainBox">
+    <h3>Адрес : </h3><div><?=$address?></div>
+    <h3>eMail : </h3><div><?=$email?></div>
+    <h3>Skype : </h3><div><?php echo $_SERVER['SERVER_NAME']?></div>
+<div id="tel"><h3>Наши телефоны :</h3></div>
+<p>Life : </p>
+<p>MTS : <?=$tel?></p>
+<p>Київстар : </p>
 </div>

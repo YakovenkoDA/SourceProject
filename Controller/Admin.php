@@ -47,7 +47,8 @@ class Controller_Admin extends System_Controller
         /**
          * @var Model_Product[] $productModels
          */
-        if(!empty($params['remove'])){ Model_Product :: remove($params['id']);} 
+        if(!empty($params['remove'])){ Model_Product :: remove($params['id']);}
+        if(!empty($params['set'])){ Model_Product :: setProduct($params['id']);}
         $productModels = Model_Product :: getItems($params);              
         $countProducts = Model_Product :: getCountItems();
         
@@ -63,7 +64,8 @@ class Controller_Admin extends System_Controller
     public function productInfoAction()
     {
         $params = $this->_getArguments();
-
+        $currentPage    = !empty($params['page']) ? $params['page'] : 1;
+        $this->view->setParam('currentPage', $currentPage);
         if(!empty($params['id']))
         {
             $productId = $params['id'];
