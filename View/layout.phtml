@@ -47,7 +47,7 @@
         <script type="text/javascript" src="<?= URL.'/js/'.$viewFolder.'/'.$actionName.'.js'?>"></script>
     </head>    
     <body>    
-        <div id="error"><?php echo !empty($errorMessage) ? $errorMessage : ''; ?></div>
+        <div id="error" class="error"><?=$errorMessage?></div>
         <div <?= !empty($userId) ?'':'style="display: none;"';?> class="mainBox" id="userEnter">
         <div id="userEmail">'Вы зашли как:<a href="<?=URL?>/user/profile/id/<?=$userId?>"><?php echo !empty($userEmail) ? $userEmail : ''; ?></a></div>
         <div id="userId"><a id="logout" href="#"><?php echo !empty($userId) ? 'Exit' : ''?></a></div>    

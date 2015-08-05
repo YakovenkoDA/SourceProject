@@ -126,14 +126,43 @@ class Model_Product
      $dbTableProduct = new Model_Db_Table_Product();
      $dbTableProduct->removeByID($id);
     }
-    public static function setProduct()
+    public static function setProduct($id=NULL)
     {
-     if(isse($_POST))
-         {
-         foreach ($_POST as $key=>$value)
-         {
-             
-         }
-         }   
+    if(!empty($_POST['name']))
+    {       
+    $id   = trim($id);
+    $name = trim($_POST['name']);
+    
+    $dbTableProduct = new Model_Db_Table_Product();
+    $resalt=$dbTableProduct->selectByName($name,$id);
+    if($resalt != NULL){return $error=1;}
+    }
+    else
+        {
+        throw new Exception('incorect name', System_Exception::VALIDATE_ERROR);
+        }
+    $modelProduct = new self();    
+    $modelProduct->id           = $id;
+    $modelProduct->name         = $name;   
+    $modelProduct->price        = !empty($_POST['price']) ? trim($_POST['price']) : 0;
+    $modelProduct->total        = !empty($_POST['total']) ? trim($_POST['total']) : 0;
+    $modelProduct->description  = !empty($_POST['description']) ? $_POST['description'] : ' ';
+    $modelProduct->img          = !empty($_FILES['img']['name']) ? $_FILES['img']['name'] : ' ';
+    
+    $dbTableProduct->create($modelProduct);
+    
+    if(!empty($_FILES['img']['name']))
+        {         
+        $pathImg= SITE_PATH.'img/Products/'.$_FILES['img']['name'];
+        if($_FILES['img']['error']==0 && !file_exists($pathImg))
+            {            
+            move_uploaded_file($_FILES['img']['tmp_name'],$pathImg);                 
+            }
+        else 
+            {
+            unset($_FILES);
+            throw new Exception('Can not upload file', System_Exception::VALIDATE_ERROR);
+            }    
+        }      
     }
 }

@@ -17,9 +17,13 @@
 
     <?php foreach($products as $product) : ?>
     <?php /** @var Model_Product $product*/ ?>
-    
+    <?php
+        $imgUrl =('/img/Products/'.$product->img);
+        $src    = URL.'/img/Products/img.png';
+        if($product->img != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}        
+    ?>
     <div id="product" class="mainBox"> 
-        <div><img alt="<?php echo 'img-'.$product->img->name;?>" src="<?= file_exists(SITE_PATH.$img=('/img/Products/'.$product->img))?URL.$img : URL.'/img/Products/img.png';?>"></div>
+        <div><img alt="<?='img-'.$product->img;?>" src="<?=$src?>"></div>
         <div><?= $product->name;?></div>
         <div><?= $product->price;?></div>
         <div><?= $product->description;?></div>

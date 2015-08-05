@@ -6,8 +6,11 @@ background: white  url(../img/bacground.jpg) no-repeat;
 #error
 {
 width:200px; 
-margin:0 74%; 
-color:red;  
+margin:0 74%;
+}
+.error
+{
+color:red;      
 }
 #userEnter
 {

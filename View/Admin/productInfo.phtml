@@ -1,4 +1,13 @@
 <?php
+$errorType = $view->getParam('error');
+$errorMessage = '';
+    if(!empty($errorType)) {
+        switch($errorType) {
+            case System_Exception::ALREADY_EXIST:
+                $errorMessage = 'Product already exists!';
+                break;
+        }
+    }
 $product     = $view->getParam('product');
 $currentPage  = $view->getParam('currentPage');
 $url=URL.'/Admin/product';
@@ -11,6 +20,7 @@ if(!empty($product))
     $total= $product->total;
     }
 ?>
+<div class="error"><?=$errorMessage?></div>
 <form action="<?=$url.'/page/'.$currentPage.'/set/1'?>" method="POST" enctype="multipart/form-data">
     <div>    
     <label for="name">Product name</label>
