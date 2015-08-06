@@ -1,3 +1,4 @@
+<!--check error-->
 <?php
 $errorType = $view->getParam('error');
 $errorMessage = '';
@@ -13,7 +14,10 @@ $errorMessage = '';
                 $errorMessage = 'File whis this name already exists!';
                 break;
         }
-    }
+    }?>
+
+<!--set params-->
+<?php   
 $product     = $view->getParam('product');
 $currentPage  = $view->getParam('currentPage');
 $url=URL.'/Admin/product';
@@ -27,12 +31,10 @@ if(!empty($product))
     $total= $product->total;
     $imgUrl =('/img/Products/'.$product->img);        
     if($product->img != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}    
-    }
-        
-    
-    
-        
+    }      
 ?>
+
+<!--form for insert(update) product-->
 <div class="mainBox" id="body">
 <div class="error"><?=$errorMessage?></div>
 <form action="<?=$url.'/page/'.$currentPage.'/set/1'?>" method="POST" enctype="multipart/form-data">

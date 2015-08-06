@@ -6,11 +6,15 @@ $user = $view->getParam('user');
 
 ?>
 <?php if($user) : ?>
+
+<!--set params-->
 <?php 
     $src = URL.'/img/img.png';
     $imgUrl =('/img/Users/'.$user->photo);        
     if($user->photo != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}
 ?>
+
+<!--show user profile-->
 <div class="mainBox" id="body">
     <div>
         <img alt="photo-<?=$user->login;?>" src="<?=$src?>"> 

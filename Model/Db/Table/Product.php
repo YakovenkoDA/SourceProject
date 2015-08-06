@@ -3,9 +3,10 @@ class Model_Db_Table_Product extends System_Db_Table
 {
     protected $_name = 'product';
 /**
+ * update or insert product to DB
  * 
  * @param Model_Product $productModel
- * @return type
+ * 
  */
     public function create($productModel)
     {        
@@ -15,6 +16,7 @@ class Model_Db_Table_Product extends System_Db_Table
         $img            = $productModel->img;
         $price          = $productModel->price;
         $total          = $productModel->total;
+        
         if($id !=NULL)
             {
             $sth = $this->_connection->prepare('UPDATE ' . $this->_name . ' SET name=?,description=?,img=?,price=?,total=? where id='.$id);    
@@ -27,6 +29,12 @@ class Model_Db_Table_Product extends System_Db_Table
         
         $result = $sth->execute(array($name,$description,$img,$price,$total));       
     }
+    /**
+     * 
+     * @param str $name
+     * @param int $id
+     * @return PDOStatement
+     */
     public function selectByName($name,$id=NULL)
     {
         $name = trim($name);

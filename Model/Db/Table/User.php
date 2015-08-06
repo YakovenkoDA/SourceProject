@@ -19,7 +19,12 @@ class Model_Db_Table_User extends System_Db_Table
             return $this->_connection->lastInsertId();
         }
     }
-    
+    /**
+     * 
+     * @param array $params
+     * @param int $mode
+     * @return PDOStatement
+     */
     public function checkIfExists($params, $mode = Model_User::MODE_REGISTER)
     {
         $login      = trim($params['email']);

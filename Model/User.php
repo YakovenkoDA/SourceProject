@@ -1,12 +1,40 @@
 <?php
 class Model_User
 {
+    /**
+     *
+     * @var int 
+     */
     public  $id;
+    /**
+     *
+     * @var str
+     */
     public  $login;
+    /**
+     *
+     * @var str
+     */
     public  $email;
+    /**
+     *
+     * @var str
+     */
     private $_password;
+    /**
+     *
+     * @var str
+     */
     public  $photo;
+    /**
+     *
+     * @var int
+     */
     public  $role_id;
+    /**
+     *
+     * @var str
+     */
     public  $skills;
     
     const ROLE_ADMIN_ID = 1;
@@ -14,7 +42,11 @@ class Model_User
     const MODE_LOGIN    = 2;
     
     const LIFETIME_USER_COOKIE = 10800;//3 hours
-    
+    /**
+     * 
+     * @param str $login
+     * @param str $password
+     */
     public function create($login, $password)
     {
         $dbUser = new Model_Db_Table_User();
@@ -48,6 +80,11 @@ class Model_User
             throw new Exception('User not found', System_Exception::NOT_FOUND);
         }
     }
+    /**
+     * 
+     * @param array $params
+     * @return \self
+     */
      public static function getItems($params)
     {
         $dbTableUser = new Model_Db_Table_User();
@@ -68,6 +105,10 @@ class Model_User
         
         return $userModels;
     }
+    /**
+     * 
+     * @return int $countItems
+     */
     public static function getCountItems()
     {
         $dbTableUser = new Model_Db_Table_User();
@@ -83,13 +124,10 @@ class Model_User
         return $this->login . ' ' . $this->email;
     }        
     
-    
-    public function save()
-    {
-        $tableUser = new Model_Db_Table_User();
-        $tableUser->save($this);
-    }  
-    
+    /**
+     * 
+     * @param str $value
+     */
     public function setEmail($value)
     {
         $this->email = $value;

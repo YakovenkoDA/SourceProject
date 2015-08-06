@@ -1,13 +1,20 @@
 <h2 class="mainBox">Наши продукты</h2>
-<?php $url=URL.'/product/index/page/';?>
+
+<!--set params-->
+    <?php $url=URL.'/product/index/page/';?>
 <?php $limit        = $controller->getSessParam('limit'); ?>
 <?php $orderType    = $controller->getSessParam('ordertype'); ?>
 <?php $orderBy      = $controller->getSessParam('orderByProduct'); ?>
 <?php $currentPage  = $view->getParam('currentPage'); ?>
 <?php $products     = $view->getParam('products'); ?>
+
 <?php if(!empty($products)) :?>
+
+<!--include limit for items-->
 <?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
 <div>
+
+<!-- menu for sort-->
 <div id="productTitle">
     <p>Cортировать по:
     
@@ -21,6 +28,7 @@
     </p>
 </div>
 
+<!--print items-->
     <?php foreach($products as $product) : ?>
     <?php
         $src    = URL.'/img/img.png';
@@ -36,9 +44,13 @@
     </div>
         <?php endforeach; ?>
 </div>
+
+<!--include pagination-->
     <?php 
     $countPages = ceil($view->getParam('countProducts') / $limit);
     if($countPages>1){include SITE_PATH.DS.'View'.DS.'paginator.phtml';}
     ?>
 
+<?php  elseif($view->getParam('error')) : ?>
+    <div style="color:red;"><h1><?php echo $view->getParam('error')?></h1></div>
 <?php endif; ?>

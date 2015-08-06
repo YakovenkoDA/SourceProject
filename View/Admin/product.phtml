@@ -1,4 +1,7 @@
+<!--include admin menu-->
 <?php include 'menu.phtml';?>
+
+<!-- set params -->
 <?php $url=URL.'/admin/product/page/';?>
 <?php $limit        = $controller->getSessParam('limit'); ?>
 <?php $orderType    = $controller->getSessParam('ordertype'); ?>
@@ -10,8 +13,10 @@
 <h2 class="mainBox">ADmin продукты</h2>
 <h3><a href="<?=URL.'/admin/productInfo'?>">Добавить новый</a></h3>
 
+<!--include limit for items-->
 <?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
 
+<!-- menu's for sort-->
 <?php if(!empty($products)) :?>
     <table align="center">
         <tr>
@@ -30,8 +35,10 @@
                 <th><a href='<?php echo $url.$currentPage;?>/orderby/total/ordertype/asc'>Total<?php if($orderBy == 'total') :?>&uarr;<?php endif; ?></a></th>
             <?php endif; ?>  
                <th></th>  
-        </tr>        
-    <?php foreach($products as $product) : ?>
+        </tr> 
+        
+<!-- print items-->   
+    <?php foreach($products as $product) : ?>    
     <tr>   
         <td><a href="<?=URL.'/admin/productInfo/page/'.$currentPage.'/id/'.$product->id?>">change</a></td>
         <td class="mainBox"><?php echo $product->img;?></td>
@@ -44,6 +51,7 @@
         <?php endforeach; ?>   
 </table>
 
+<!--include pagination-->
     <?php 
     $countPages = ceil($view->getParam('countProducts') / $limit);
     if($countPages>1){include SITE_PATH.DS.'View'.DS.'paginator.phtml';}

@@ -1,4 +1,8 @@
-<?php include 'menu.phtml';?>
+<!--include admin menu-->
+ 
+    <?php include 'menu.phtml';?>
+
+<!-- set params -->
 <?php $url=URL.'/admin/customer/page/';?>
 <?php $limit        = $controller->getSessParam('limit'); ?>
 <?php $orderType    = $controller->getSessParam('ordertype'); ?>
@@ -8,8 +12,11 @@
 
 <h2 class="mainBox">ADmin клиенты</h2>
 <h3><a href="<?=URL.'/admin/Info'?>">Добавить нового</a></h3>
-<?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
 
+<!--include limit for items-->
+    <?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
+
+<!-- menu's for sort-->
 <?php if(!empty($customers)) :?>
     <table align="center">
         <tr>
@@ -28,7 +35,9 @@
                 <th><a href='<?php echo $url.$currentPage;?>/orderby/role_id/ordertype/asc'>role_id<?php if($orderBy == 'role_id') :?>&uarr;<?php endif; ?></a></th>
             <?php endif; ?>  
                <th></th>  
-        </tr>        
+        </tr> 
+        
+<!-- print items-->
     <?php foreach($customers as $customer) : ?>
     <tr>   
         <td><a href="#">change</a></td>
@@ -42,6 +51,7 @@
         <?php endforeach; ?>   
 </table>
 
+<!--include pagination-->
     <?php 
     $countPages = ceil($view->getParam('countCustomers') / $limit);
     if($countPages>1){include SITE_PATH.DS.'View'.DS.'paginator.phtml';}
