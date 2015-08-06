@@ -1,25 +1,30 @@
 <h2 class="mainBox">Наши продукты</h2>
 <?php $url=URL.'/product/index/page/';?>
+<?php $limit        = $controller->getSessParam('limit'); ?>
+<?php $orderType    = $controller->getSessParam('ordertype'); ?>
+<?php $orderBy      = $controller->getSessParam('orderByProduct'); ?>
 <?php $currentPage  = $view->getParam('currentPage'); ?>
-<?php $limit        = $view->getParam('limit'); ?>
-<?php $orderType    = $view->getParam('orderType'); ?>
-<?php $orderBy      = $view->getParam('orderBy'); ?>
 <?php $products     = $view->getParam('products'); ?>
 <?php if(!empty($products)) :?>
 <?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
 <div>
 <div id="productTitle">
-                <a href='<?= $url.$currentPage;?>/orderby/name'>Name<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
-                <a href='<?= $url.$currentPage;?>/orderby/price'>Price<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
-                <a href='<?= $url.$currentPage;?>/orderby/total'>Total<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
-                <a href='<?= $url.$currentPage;?>/ordertype/<?php echo $orderType!='asc'?'asc':'desc';?>'><?php echo $orderType!='asc'?'asc':'desc';?></a> 
+    <p>Cортировать по:
+    
+    <a href='<?= $url.$currentPage;?>/orderby/name'>Имени<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
+    <a href='<?= $url.$currentPage;?>/orderby/price'>Цене<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
+    <a href='<?= $url.$currentPage;?>/orderby/total'>Количеству<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
+    </p>
+    <p>
+    <a href='<?= $url.$currentPage;?>/ordertype/asc'>по возрастанию<?php if($orderType == 'asc') :?>&darr;<?php endif; ?></a>
+    <a href='<?= $url.$currentPage;?>/ordertype/desc'>по убыванию<?php if($orderType == 'desc') :?>&darr;<?php endif; ?></a> 
+    </p>
 </div>
 
     <?php foreach($products as $product) : ?>
-    <?php /** @var Model_Product $product*/ ?>
     <?php
-        $imgUrl =('/img/Products/'.$product->img);
-        $src    = URL.'/img/Products/img.png';
+        $src    = URL.'/img/img.png';
+        $imgUrl =('/img/Products/'.$product->img);           
         if($product->img != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}        
     ?>
     <div id="product" class="mainBox"> 

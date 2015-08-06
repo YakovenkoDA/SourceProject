@@ -7,6 +7,7 @@ class Model_User
     private $_password;
     public  $photo;
     public  $role_id;
+    public  $skills;
     
     const ROLE_ADMIN_ID = 1;
     const MODE_REGISTER = 1;
@@ -39,6 +40,7 @@ class Model_User
             $modelUser->email       = $userData->email;
             $modelUser->photo       = $userData->photo;
             $modelUser->role_id     = $userData->role_id;
+            $modelUser->skills      = $userData->skills;
 
             return $modelUser;
         }
@@ -60,6 +62,7 @@ class Model_User
             $modelUser->email       = $item->email;
             $modelUser->photo       = $item->photo;
             $modelUser->role_id     = $item->role_id;
+            $modelUser->skills      = $item->skills;
             $userModels[] = $modelUser;
         }
         

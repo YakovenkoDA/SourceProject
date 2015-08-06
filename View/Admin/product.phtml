@@ -1,14 +1,17 @@
 <?php include 'menu.phtml';?>
 <?php $url=URL.'/admin/product/page/';?>
+<?php $limit        = $controller->getSessParam('limit'); ?>
+<?php $orderType    = $controller->getSessParam('ordertype'); ?>
+<?php $orderBy      = $controller->getSessParam('orderByProduct'); ?>
 <?php $currentPage  = $view->getParam('currentPage'); ?>
-<?php $limit        = $view->getParam('limit'); ?>
-<?php $orderType    = $view->getParam('orderType'); ?>
-<?php $orderBy      = $view->getParam('orderBy'); ?>
 <?php $products     = $view->getParam('products'); ?>
-<?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
+
 
 <h2 class="mainBox">ADmin продукты</h2>
-<h3><a href="<?=URL.'/admin/productInfo'?>">add new product</a></h3>
+<h3><a href="<?=URL.'/admin/productInfo'?>">Добавить новый</a></h3>
+
+<?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
+
 <?php if(!empty($products)) :?>
     <table align="center">
         <tr>
@@ -29,7 +32,6 @@
                <th></th>  
         </tr>        
     <?php foreach($products as $product) : ?>
-    <?php /** @var Model_Product $product*/ ?>   
     <tr>   
         <td><a href="<?=URL.'/admin/productInfo/page/'.$currentPage.'/id/'.$product->id?>">change</a></td>
         <td class="mainBox"><?php echo $product->img;?></td>
@@ -37,7 +39,7 @@
         <td class="mainBox"><?php echo $product->description;?></td>
         <td class="mainBox"><?php echo $product->price;?></td>
         <td class="mainBox"><?php echo $product->total;?></td>
-        <td><a href="<?=$url.$currentPage.'/remove/1/id/'.$product->id?>">delete</a></td>
+        <td><a href="<?=URL.'/admin/remove/action/product/page/'.$currentPage.'/id/'.$product->id?>">delete</a></td>
     </tr>
         <?php endforeach; ?>   
 </table>

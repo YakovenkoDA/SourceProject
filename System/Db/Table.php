@@ -48,8 +48,8 @@ abstract class System_Db_Table
             $limit = $_SESSION['limit'];
             $page *= $limit;
         }
-        if(isset($_SESSION['orderby'])) {
-            $orderBy = $_SESSION['orderby'];
+        if(isset($params['orderby'])) {
+            $orderBy = $params['orderby'];
         }
         if(isset($_SESSION['ordertype'])) {
             $orderType = $_SESSION['ordertype'];

@@ -51,7 +51,7 @@ abstract class System_Controller
         $_SESSION[$key] = $value;
     }
     
-    protected function getSessParam($key)
+    public function getSessParam($key)
     {   
         if(!empty($_SESSION)) {
             return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : NULL;

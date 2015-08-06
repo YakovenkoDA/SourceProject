@@ -5,23 +5,27 @@
 $user = $view->getParam('user');
 
 ?>
-
 <?php if($user) : ?>
-
-<table border="2px">
-    <th>Id</th>    
-    <th>Name</th>    
-    <th>Email</th>    
-    <th>Photo</th>    
-    <tr>
-        <td><?php echo $user->id;?></td>
-<!--        <td><?php //echo $user->login;?></td>
-        <td><?php //echo $user->email;?></td>-->
-        <td><?php echo $user->getFullName();?></td>
-        
-        <td><?php echo $user->photo;?></td>
-    </tr>
-</table>
+<?php 
+    $src = URL.'/img/img.png';
+    $imgUrl =('/img/Users/'.$user->photo);        
+    if($user->photo != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}
+?>
+<div class="mainBox" id="body">
+    <div>
+        <img alt="photo-<?=$user->login;?>" src="<?=$src?>"> 
+    </div>
+    <div id="forLabels">
+        <p>login :</p>
+        <p>email :</p>   
+        <p>skills :</p>
+    </div>    
+    <div id="userInfo">
+        <p><?=!empty($user->login) ? $user->login : 'emty';?></p>
+        <p><?=!empty($user->email) ? $user->email : 'emty';?></p>
+        <p><?=!empty($user->skills) ?$user->skills : 'emty';?></p>
+    </div>    
+</div>
 
 <?php  elseif($view->getParam('error')) : ?>
     <div style="color:red;"><h1><?php echo $view->getParam('error')?></h1></div>

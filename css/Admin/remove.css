@@ -1,0 +1,13 @@
+#remove
+{
+    color: darkblue;
+    border: 3px solid red;
+    width: 500px;
+    margin: auto;
+    margin-top: 10%;
+    padding: 20px;
+}
+#remove a
+{
+    padding: 20px;
+}

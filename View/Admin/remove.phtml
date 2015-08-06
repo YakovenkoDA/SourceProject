@@ -1,0 +1,11 @@
+<?php
+$currentPage  = $view->getParam('currentPage');
+$id = $view->getParam('id');
+$action=$view->getParam('action');
+str_replace($id,'_', '/');
+$url=URL.'/admin/'.$action.'/page/'.$currentPage;
+?>
+<div class="mainBox" id="remove">
+    <h2>Вы действительно хотите удалить запись?</h2>
+    <a href="<?=$url.'/remove/1'.'/id/'.$id?>">Да!</a><a href="<?=$url?>">Отменить</a>
+</div>

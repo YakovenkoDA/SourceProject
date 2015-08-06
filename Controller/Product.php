@@ -8,7 +8,8 @@ class Controller_Product extends System_Controller
         
         if(!empty($params['limit'])){$this->setSessParam('limit',$params['limit']);}
         if(!empty($params['ordertype'])){$this->setSessParam('ordertype',$params['ordertype']);}
-        if(!empty($params['orderby'])){$this->setSessParam('orderby',$params['orderby']);}
+        if(!empty($params['orderby'])){$this->setSessParam('orderByProduct',$params['orderby']);}
+        else {$params['orderby']=$this->getSessParam('orderByProduct',$params['orderby']);}
         $currentPage    = !empty($params['page']) ? $params['page'] : 1; 
         /**
          * @var Model_Product[] $productModels
@@ -19,10 +20,7 @@ class Controller_Product extends System_Controller
         if($this->getSessParam('limit')== NULL){$this->setSessParam('limit',5);}
         
         $this->view->setParam('products', $productModels);
-        $this->view->setParam('countProducts', $countProducts);
-        $this->view->setParam('limit', $this->getSessParam('limit'));
-        $this->view->setParam('currentPage', $currentPage);
-        $this->view->setParam('orderType',$this->getSessParam('ordertype'));
-        $this->view->setParam('orderBy', $this->getSessParam('orderby'));
+        $this->view->setParam('countProducts', $countProducts);        
+        $this->view->setParam('currentPage', $currentPage);        
     }  
 }

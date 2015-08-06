@@ -1,0 +1,26 @@
+#body 
+{
+width: 300px;
+margin: auto;
+padding: 30px;
+font: 18px cursive;
+}
+#forLabel
+{
+text-align: left;
+width: 50px;
+float: left;
+padding-right: 30px;
+}
+#forLabel label
+{
+padding-bottom: 10px;
+}
+#forInput
+{
+text-align: left; 
+}
+#body img
+{
+height: 200px;
+}

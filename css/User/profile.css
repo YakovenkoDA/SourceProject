@@ -1,24 +1,26 @@
-#body h2
+#body
 {
-    font-family:cursive;
-    color:indigo;
+ width: 500px;
+ margin: auto;
+ padding: 30px; 
+ font: 18px cursive; 
+}
+#forLabels
+{
+ color: white;
+ height:200px;
+ float: left;
+ padding: 20px;
 }
 #userInfo
-{  
-    text-align: left;
-    margin-left: 25%; 
-    float: left;   
-}
-#body label
-{
-    color:goldenrod;
-    font: italic 20px fantasy;
-}
-#body span
-{
-font-size: 25px;    
+{ 
+ padding: 20px;   
+ height:200px;
+ text-align: left;
+ margin-left: 25%; 
 }
 #body img
 {
-  width: 200px;
+  height:200px;
+  float: left;
 }

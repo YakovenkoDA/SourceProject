@@ -103,6 +103,7 @@ class Model_Product
         if($productData) {
             $modelProduct  = new self();
             $modelProduct->id           = $productData->id;
+            $modelProduct->img          = $productData->img;
             $modelProduct->name         = $productData->name;
             $modelProduct->description  = $productData->description;
             $modelProduct->price        = $productData->price;
@@ -135,7 +136,20 @@ class Model_Product
     
     $dbTableProduct = new Model_Db_Table_Product();
     $resalt=$dbTableProduct->selectByName($name,$id);
+    /**
+     *@return $error
+     */
     if($resalt != NULL){return $error=1;}
+    /**
+     *upload file
+     *@return $error
+     */
+    if(!empty($_FILES['img']['name'])){
+        $pathImg= SITE_PATH.'img/Products/'.$_FILES['img']['name'];
+        if($_FILES['img']['error']!=0){return $error=6;}
+        if(file_exists($pathImg)){return $error=7;}
+        move_uploaded_file($_FILES['img']['tmp_name'],$pathImg);
+    }
     }
     else
         {
@@ -149,20 +163,6 @@ class Model_Product
     $modelProduct->description  = !empty($_POST['description']) ? $_POST['description'] : ' ';
     $modelProduct->img          = !empty($_FILES['img']['name']) ? $_FILES['img']['name'] : ' ';
     
-    $dbTableProduct->create($modelProduct);
-    
-    if(!empty($_FILES['img']['name']))
-        {         
-        $pathImg= SITE_PATH.'img/Products/'.$_FILES['img']['name'];
-        if($_FILES['img']['error']==0 && !file_exists($pathImg))
-            {            
-            move_uploaded_file($_FILES['img']['tmp_name'],$pathImg);                 
-            }
-        else 
-            {
-            unset($_FILES);
-            throw new Exception('Can not upload file', System_Exception::VALIDATE_ERROR);
-            }    
-        }      
+    $dbTableProduct->create($modelProduct);            
     }
 }

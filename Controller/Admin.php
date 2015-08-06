@@ -1,6 +1,11 @@
 <?php
+
 class Controller_Admin extends System_Controller
 {
+    /**
+     * 
+     * @throws Exception
+     */
     public function __construct() {
         parent::__construct();
         $userRole = $this->getSessParam('userRole');
@@ -8,18 +13,24 @@ class Controller_Admin extends System_Controller
         throw new Exception('404 error. Page Not Found');    
         }  
     }
-
+    /**
+     * 
+     */
     public function indexAction()
     {
         
     }
+    /**
+     * 
+     */
     public function customerAction()
     {
      $params = $this->_getArguments();
         
         if(!empty($params['limit'])){$this->setSessParam('limit',$params['limit']);}
         if(!empty($params['ordertype'])){$this->setSessParam('ordertype',$params['ordertype']);}
-        if(!empty($params['orderby'])){$this->setSessParam('orderby',$params['orderby']);}
+        if(!empty($params['orderby'])){$this->setSessParam('orderByCustomer',$params['orderby']);}
+        else {$params['orderby']=$this->getSessParam('orderByCustomer',$params['orderby']);}
         $currentPage    = !empty($params['page']) ? $params['page'] : 1; 
         /**
          * @var Model_User[] $customerModels
@@ -31,37 +42,39 @@ class Controller_Admin extends System_Controller
       
         $this->view->setParam('customers', $customerModels);
         $this->view->setParam('countCustomers', $countCustomers);
-        $this->view->setParam('limit', $this->getSessParam('limit'));
-        $this->view->setParam('currentPage', $currentPage);
-        $this->view->setParam('orderType',$this->getSessParam('ordertype'));
-        $this->view->setParam('orderBy', $this->getSessParam('orderby'));    
+        $this->view->setParam('currentPage', $currentPage);        
     }
+    /**
+     * 
+     */
     public function productAction()
     {       
       $params = $this->_getArguments();
-        $this->setSessParam('orderby','id');
+      
         if(!empty($params['limit'])){$this->setSessParam('limit',$params['limit']);}
         if(!empty($params['ordertype'])){$this->setSessParam('ordertype',$params['ordertype']);}
-        if(!empty($params['orderby'])){$this->setSessParam('orderby',$params['orderby']);}
+        if(!empty($params['orderby'])){$this->setSessParam('orderByProduct',$params['orderby']);}
+        else {$params['orderby']=$this->getSessParam('orderByProduct',$params['orderby']);}
         $currentPage    = !empty($params['page']) ? $params['page'] : 1; 
         /**
          * @var Model_Product[] $productModels
          */
         if(!empty($params['remove'])){ Model_Product :: remove($params['id']);}
-        if(!empty($params['set'])){ $er=Model_Product :: setProduct($params['id']);}
-        if(!empty($er)){header('location: '.URL.'/admin/productInfo/page/'.$currentPage.'/error/'.$er.'/id/'.$params['id']);}
+        if(!empty($params['set'])){ $error=Model_Product :: setProduct($params['id']);}
+        if(!empty($error)){header('location: '.URL.'/admin/productInfo/page/'.$currentPage.'/error/'.$error.'/id/'.$params['id']);}
+        
         $productModels = Model_Product :: getItems($params);              
         $countProducts = Model_Product :: getCountItems();
         
         if($this->getSessParam('limit')== NULL){$this->setSessParam('limit',5);}
         
         $this->view->setParam('products', $productModels);
-        $this->view->setParam('countProducts', $countProducts);
-        $this->view->setParam('limit', $this->getSessParam('limit'));
-        $this->view->setParam('currentPage', $currentPage);
-        $this->view->setParam('orderType',$this->getSessParam('ordertype'));
-        $this->view->setParam('orderBy', $this->getSessParam('orderby')); 
+        $this->view->setParam('countProducts', $countProducts);        
+        $this->view->setParam('currentPage', $currentPage);        
     }
+    /**
+     * 
+     */
     public function productInfoAction()
     {
         $params = $this->_getArguments();
@@ -81,5 +94,17 @@ class Controller_Admin extends System_Controller
             }
         }      
     
+    }
+    /**
+     * 
+     */
+    public function removeAction()
+    {
+     $params = $this->_getArguments();
+         
+     $currentPage    = !empty($params['page']) ? $params['page'] : 1;
+     $this->view->setParam('currentPage', $currentPage);
+     $this->view->setParam('id',$params['id']); 
+     $this->view->setParam('action',$params['action']);  
     }
 }
