@@ -10,11 +10,11 @@
 <?php $currentPage  = $view->getParam('currentPage'); ?>
 <?php $customers     = $view->getParam('customers'); ?>
 
+<!--include limit for items-->
+<?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
+
 <h2 class="mainBox">ADmin клиенты</h2>
 <h3><a href="<?=URL.'/admin/Info'?>">Добавить нового</a></h3>
-
-<!--include limit for items-->
-    <?php include SITE_PATH.DS.'View'.DS.'limit.phtml';?>
 
 <!-- menu's for sort-->
 <?php if(!empty($customers)) :?>

@@ -3,6 +3,11 @@ h2
 margin: auto;
 width: 250px;    
 }
+h3
+{
+    width: 200px;
+    margin-left: 60%;
+}
 table
 {
 color: white;

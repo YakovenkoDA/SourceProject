@@ -50,8 +50,15 @@ border-radius: 10px;
 {
 padding:10px;
 font: 16px cursive;
+width : 210px;
+float : left;
+margin-left : 100px;
 }
 a
 {
 padding: 10px;
+}
+#pagination
+{
+ font: 16px cursive; 
 }

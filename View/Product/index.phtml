@@ -15,17 +15,15 @@
 <div>
 
 <!-- menu for sort-->
-<div id="productTitle">
-    <p>Cортировать по:
-    
-    <a href='<?= $url.$currentPage;?>/orderby/name'>Имени<?php if($orderBy == 'name') :?>&darr;<?php endif; ?></a>
-    <a href='<?= $url.$currentPage;?>/orderby/price'>Цене<?php if($orderBy == 'price') :?>&darr;<?php endif; ?></a>
-    <a href='<?= $url.$currentPage;?>/orderby/total'>Количеству<?php if($orderBy == 'total') :?>&darr;<?php endif; ?></a>
-    </p>
-    <p>
-    <a href='<?= $url.$currentPage;?>/ordertype/asc'>по возрастанию<?php if($orderType == 'asc') :?>&darr;<?php endif; ?></a>
-    <a href='<?= $url.$currentPage;?>/ordertype/desc'>по убыванию<?php if($orderType == 'desc') :?>&darr;<?php endif; ?></a> 
-    </p>
+<div id="productTitle" class="Title , mainBox">
+    <label>&#9660; Cортировать по</label>    
+    <div><a href='<?= $url.$currentPage;?>/orderby/name'>Имени<?php if($orderBy == 'name') :?>&#9668;<?php endif; ?></a></div>
+     <div><a href='<?= $url.$currentPage;?>/orderby/price'>Цене<?php if($orderBy == 'price') :?>&#9668;<?php endif; ?></a></div>
+     <div><a href='<?= $url.$currentPage;?>/orderby/total'>Количеству<?php if($orderBy == 'total') :?>&#9668;<?php endif; ?></a></div>
+</div>
+<div class="Title">
+    <a href='<?= $url.$currentPage;?>/ordertype/asc'><?php if($orderType == 'asc') :?>&#9650;<?php endif; ?>по возрастанию</a>
+    <a href='<?= $url.$currentPage;?>/ordertype/desc'><?php if($orderType == 'desc') :?>&#9660;<?php endif; ?>по убыванию</a> 
 </div>
 
 <!--print items-->
@@ -36,11 +34,12 @@
         if($product->img != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}        
     ?>
     <div id="product" class="mainBox"> 
-        <div><img alt="<?='img-'.$product->img;?>" src="<?=$src?>"></div>
-        <div><?= $product->name;?></div>
-        <div><?= $product->price;?></div>
-        <div><?= $product->description;?></div>
-        <div><?= $product->total;?></div>
+        <div><img alt="<?='img-'.$product->img;?>" src="<?=$src?>"></div>       
+        <div><label>Название__:</label><?= $product->name;?></div>        
+        <div><label>Цена______:</label><?= $product->price;?></div>
+        <div><label>Количество:</label><?= $product->total;?></div>
+        <label>     Описание______________</label>
+        <div><?= $product->description;?></div>        
     </div>
         <?php endforeach; ?>
 </div>
