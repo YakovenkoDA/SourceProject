@@ -7,4 +7,18 @@ $(document).ready(function()
  $('#productTitle').addClass('mainBox')
             .mouseenter(function(){ sortA.slideDown(200);})
             .mouseleave(function(){sortA.slideUp(200);});
+
+$("a.gallery, a.iframe").fancybox();
+
+
+
+
+
+
+
+
+
+
+
+
 });

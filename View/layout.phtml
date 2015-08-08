@@ -32,10 +32,12 @@
     <head>
         <meta charset="UTF-8">
         <title><?php echo $_SERVER['SERVER_NAME'];?></title>
+        
         <link href="<?= URL; ?>/css/layout.css" rel="stylesheet" type="text/css"/>
         <link href="<?= URL.'/css/'.$viewFolder.'/'.$actionName.'.css'; ?>" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="<?= URL;?>/js/jquery.js"></script>
-        <script type="text/javascript" src="<?= URL;?>/js/authorize.js"></script>         
+        
+        <!-- add lquery-->
+        <script type="text/javascript" src="<?= URL;?>/fancybox/lib/jquery-1.10.1.min.js"></script> 
         
         <!-- Add mousewheel plugin (this is optional) -->
         <script type="text/javascript" src="<?= URL?>/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -43,7 +45,8 @@
         <!-- Add fancyBox -->
         <link rel="stylesheet" href="<?= URL?>/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
         <script type="text/javascript" src="<?= URL?>/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
+        
+        <script type="text/javascript" src="<?= URL;?>/js/authorize.js"></script>
         <script type="text/javascript" src="<?= URL.'/js/'.$viewFolder.'/'.$actionName.'.js'?>"></script>
     </head>    
     <body>    

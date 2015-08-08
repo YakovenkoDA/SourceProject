@@ -34,7 +34,7 @@
         if($product->img != NULL && is_readable(SITE_PATH.$imgUrl)){$src = URL.$imgUrl;}        
     ?>
     <div id="product" class="mainBox"> 
-        <div><img alt="<?='img-'.$product->img;?>" src="<?=$src?>"></div>       
+        <div><a class="gallery"  title="<?=$product->name?>" href="<?=$src?>"><img alt="<?='img-'.$product->img;?>" src="<?=$src?>"></a></div>       
         <div><label>Название__:</label><?= $product->name;?></div>        
         <div><label>Цена______:</label><?= $product->price;?></div>
         <div><label>Количество:</label><?= $product->total;?></div>
